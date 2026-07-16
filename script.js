@@ -112,34 +112,43 @@ let row = table.insertRow(-1);
 
 
 row.innerHTML = `
+row.innerHTML = `
 
 <td>
-<input type="text">
+<input type="text" class="courseCode">
 </td>
 
-<td>
-<input type="text">
-</td>
 
 <td>
-<input type="number">
+<input type="text" class="courseTitle">
 </td>
 
-<td>
-Auto
-</td>
 
 <td>
-Auto
+<input type="number" class="marks" oninput="calculateRow(this)">
 </td>
 
-<td>
-<input type="number">
+
+<td class="grade">
+-
 </td>
 
-<td>
-Auto
+
+<td class="value">
+-
 </td>
+
+
+<td>
+<input type="number" class="creditHours" oninput="calculateRow(this)">
+</td>
+
+
+<td class="points">
+-
+</td>
+
+`;
 
 `;
 }
