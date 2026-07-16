@@ -88,7 +88,7 @@ Auto
 + Add Course
 </button>
 
-`;
+
 <h3>
 SGPA:
 </h3>
@@ -104,7 +104,9 @@ container.appendChild(semester);
 }
 function addCourse(button){
 
-let table = button.previousElementSibling;
+let semesterBox = button.parentElement;
+
+let table = semesterBox.querySelector("table");
 
 let row = table.insertRow(-1);
 
@@ -115,36 +117,30 @@ row.innerHTML = `
 <input type="text">
 </td>
 
-
 <td>
 <input type="text">
 </td>
 
-
 <td>
 <input type="number">
 </td>
-
 
 <td>
 Auto
 </td>
 
-
 <td>
 Auto
 </td>
 
-
 <td>
 <input type="number">
 </td>
-
 
 <td>
 Auto
 </td>
 
 `;
-
+}
 }
