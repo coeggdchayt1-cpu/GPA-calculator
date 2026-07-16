@@ -193,3 +193,152 @@ pointsCell.innerHTML = points.toFixed(2);
 
 
 }
+function getGrade(marks){
+
+let grade = "";
+let value = 0;
+
+
+if(marks >= 85){
+
+grade = "A";
+value = 4.0;
+
+}
+
+else if(marks == 84){
+
+grade = "B";
+value = 3.9;
+
+}
+
+else if(marks == 83){
+
+grade = "B";
+value = 3.9;
+
+}
+
+else if(marks == 82){
+
+grade = "B";
+value = 3.8;
+
+}
+
+else if(marks == 81){
+
+grade = "B";
+value = 3.7;
+
+}
+
+else if(marks == 80){
+
+grade = "B";
+value = 3.7;
+
+}
+
+else if(marks == 79){
+
+grade = "B";
+value = 3.6;
+
+}
+
+else if(marks == 78){
+
+grade = "B";
+value = 3.5;
+
+}
+
+else if(marks == 77){
+
+grade = "B";
+value = 3.5;
+
+}
+
+else if(marks == 76){
+
+grade = "B";
+value = 3.4;
+
+}
+
+else if(marks == 75){
+
+grade = "B";
+value = 3.3;
+
+}
+
+else if(marks == 74){
+
+grade = "B";
+value = 3.3;
+
+}
+
+else if(marks == 73){
+
+grade = "B";
+value = 3.2;
+
+}
+
+else if(marks == 72){
+
+grade = "B";
+value = 3.1;
+
+}
+
+else if(marks == 71){
+
+grade = "B";
+value = 3.1;
+
+}
+
+else if(marks == 70){
+
+grade = "B";
+value = 3.0;
+
+}
+
+else if(marks >= 60){
+
+grade = "C";
+value = (marks - 40) / 10;
+
+}
+
+else if(marks >= 50){
+
+grade = "D";
+value = (marks - 40) / 10;
+
+}
+
+else{
+
+grade = "F";
+value = 0;
+
+}
+
+
+return {
+
+grade: grade,
+
+value: value
+
+};
+
+}
