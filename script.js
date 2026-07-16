@@ -76,7 +76,6 @@ semester.innerHTML = `
 </td>
 
 </tr>
-</tr>
 
 
 </table>
@@ -112,6 +111,45 @@ let row = table.insertRow(-1);
 
 
 row.innerHTML = `
+
+<td>
+<input type="text" class="courseCode">
+</td>
+
+
+<td>
+<input type="text" class="courseTitle">
+</td>
+
+
+<td>
+<input type="number" class="marks" oninput="calculateRow(this)">
+</td>
+
+
+<td class="grade">
+-
+</td>
+
+
+<td class="value">
+-
+</td>
+
+
+<td>
+<input type="number" class="creditHours" oninput="calculateRow(this)">
+</td>
+
+
+<td class="points">
+-
+</td>
+
+`;
+
+}
+
 row.innerHTML = `
 
 <td>
