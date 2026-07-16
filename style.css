@@ -47,3 +47,23 @@ button{
 button:hover{
     background:#0066cc;
 }
+input, select{
+
+width:90%;
+
+padding:12px;
+
+border:1px solid #ccc;
+
+border-radius:6px;
+
+font-size:16px;
+
+}
+
+
+label{
+
+font-weight:bold;
+
+}
