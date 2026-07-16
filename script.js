@@ -18,11 +18,84 @@ semester.innerHTML = `
 
 <h2>Semester ${i}</h2>
 
-<p>
-Course details will appear here.
-</p>
+<table border="1" width="100%">
+
+<tr>
+
+<th>Course Code</th>
+
+<th>Course Title</th>
+
+<th>% Marks</th>
+
+<th>Grade</th>
+
+<th>Value</th>
+
+<th>Credit Hours</th>
+
+<th>Grade Points</th>
+
+</tr>
+
+
+<tr>
+
+<td>
+<input type="text">
+</td>
+
+
+<td>
+<input type="text">
+</td>
+
+
+<td>
+<input type="number">
+</td>
+
+
+<td>
+Auto
+</td>
+
+
+<td>
+Auto
+</td>
+
+
+<td>
+<input type="number">
+</td>
+
+
+<td>
+Auto
+</td>
+
+
+</tr>
+
+
+</table>
+
+
+<br>
+
+<button>
++ Add Course
+</button>
+
+
+<h3>
+SGPA:
+</h3>
+
 
 `;
+
 
 container.appendChild(semester);
 
