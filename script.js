@@ -67,7 +67,7 @@ semester.innerHTML = `
 
 
 <td>
-<input type="number" class="creditHours" oninput="calculateRow(this)">
+<input type="number" class="creditHours" oninput="calculateRow(this); calculateSGPA(this)">
 </td>
 
 
@@ -88,9 +88,32 @@ semester.innerHTML = `
 </button>
 
 
-<h3>
+<div class="semesterResult">
+
+<p>
+Total Credit Hours:
+<span class="totalCH">0</span>
+</p>
+
+
+<p>
+Total Grade Points:
+<span class="totalGP">0</span>
+</p>
+
+
+<p>
 SGPA:
-</h3>
+<span class="sgpa">0.00</span>
+</p>
+
+
+<p>
+Grade:
+<span class="semesterGrade">-</span>
+</p>
+
+</div>
 
 
 `;
@@ -138,7 +161,7 @@ row.innerHTML = `
 
 
 <td>
-<input type="number" class="creditHours" oninput="calculateRow(this)">
+<input type="number" class="creditHours" oninput="calculateRow(this); calculateSGPA(this)">
 </td>
 
 
