@@ -84,7 +84,7 @@ Auto
 
 <br>
 
-<button>
+<button onclick="addCourse(this)">
 + Add Course
 </button>
 
@@ -100,5 +100,51 @@ SGPA:
 container.appendChild(semester);
 
 }
+
+}
+function addCourse(button){
+
+let table = button.previousElementSibling;
+
+let row = table.insertRow(-1);
+
+
+row.innerHTML = `
+
+<td>
+<input type="text">
+</td>
+
+
+<td>
+<input type="text">
+</td>
+
+
+<td>
+<input type="number">
+</td>
+
+
+<td>
+Auto
+</td>
+
+
+<td>
+Auto
+</td>
+
+
+<td>
+<input type="number">
+</td>
+
+
+<td>
+Auto
+</td>
+
+`;
 
 }
