@@ -213,6 +213,7 @@ let points = Number(creditHours) * gradeData.value;
 
 
 pointsCell.innerHTML = points.toFixed(2);
+calculateSGPA(input);
 
 
 }
