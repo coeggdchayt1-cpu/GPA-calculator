@@ -149,3 +149,47 @@ row.innerHTML = `
 `;
 
 }
+function calculateRow(input){
+
+let row = input.parentElement.parentElement;
+
+let marks = row.querySelector(".marks").value;
+
+let creditHours = row.querySelector(".creditHours").value;
+
+
+let gradeCell = row.querySelector(".grade");
+
+let valueCell = row.querySelector(".value");
+
+let pointsCell = row.querySelector(".points");
+
+
+if(marks === "" || creditHours === ""){
+
+gradeCell.innerHTML = "-";
+
+valueCell.innerHTML = "-";
+
+pointsCell.innerHTML = "-";
+
+return;
+
+}
+
+
+let gradeData = getGrade(Number(marks));
+
+
+gradeCell.innerHTML = gradeData.grade;
+
+valueCell.innerHTML = gradeData.value;
+
+
+let points = Number(creditHours) * gradeData.value;
+
+
+pointsCell.innerHTML = points.toFixed(2);
+
+
+}
