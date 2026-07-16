@@ -88,7 +88,7 @@ Auto
 + Add Course
 </button>
 
-
+`;
 <h3>
 SGPA:
 </h3>
