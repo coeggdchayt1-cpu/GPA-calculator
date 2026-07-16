@@ -365,3 +365,61 @@ value: value
 };
 
 }
+function calculateSGPA(input){
+
+let semesterBox = input.closest(".card");
+
+let rows = semesterBox.querySelectorAll("table tr");
+
+let totalCH = 0;
+
+let totalGP = 0;
+
+
+rows.forEach(function(row,index){
+
+if(index === 0) return;
+
+
+let ch = row.querySelector(".creditHours");
+
+let gp = row.querySelector(".points");
+
+
+if(ch && gp){
+
+let credit = Number(ch.value);
+
+let points = Number(gp.innerHTML);
+
+
+if(!isNaN(credit) && !isNaN(points)){
+
+totalCH += credit;
+
+totalGP += points;
+
+}
+
+}
+
+});
+
+
+let sgpa = 0;
+
+if(totalCH > 0){
+
+sgpa = totalGP / totalCH;
+
+}
+
+
+semesterBox.querySelector(".totalCH").innerHTML = totalCH;
+
+semesterBox.querySelector(".totalGP").innerHTML = totalGP.toFixed(2);
+
+semesterBox.querySelector(".sgpa").innerHTML = sgpa.toFixed(2);
+
+
+}
