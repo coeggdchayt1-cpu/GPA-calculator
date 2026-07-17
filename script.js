@@ -566,4 +566,10 @@ grade = "F";
 standing = "Fail";
 
 }
+document.getElementById("overallGrade").innerHTML = grade;
+
+document.getElementById("academicStanding").innerHTML = standing;
+
+
 }
+
