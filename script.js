@@ -573,3 +573,8 @@ document.getElementById("academicStanding").innerHTML = standing;
 
 }
 
+function printTranscript(){
+
+window.print();
+
+}
