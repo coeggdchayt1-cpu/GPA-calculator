@@ -122,7 +122,37 @@ Grade:
 container.appendChild(semester);
 
 }
+let cgpaCard = document.createElement("div");
 
+cgpaCard.className = "card";
+
+cgpaCard.innerHTML = `
+
+<h2>Cumulative Academic Record</h2>
+
+<p>
+<strong>Total Credit Hours:</strong>
+<span id="cgpaCH">0</span>
+</p>
+
+<p>
+<strong>Total Grade Points:</strong>
+<span id="cgpaGP">0.00</span>
+</p>
+
+<p>
+<strong>CGPA:</strong>
+<span id="cgpa">0.00</span>
+</p>
+
+<p>
+<strong>Overall Grade:</strong>
+<span id="overallGrade">-</span>
+</p>
+
+`;
+
+container.appendChild(cgpaCard);
 }
 function addCourse(button){
 
