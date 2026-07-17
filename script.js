@@ -522,5 +522,48 @@ document.getElementById("cgpaCH").innerHTML = totalCH;
 document.getElementById("cgpaGP").innerHTML = totalGP.toFixed(2);
 
 document.getElementById("cgpa").innerHTML = cgpa.toFixed(2);
+let grade = "";
 
+let standing = "";
+
+
+if(cgpa >= 4.0){
+
+grade = "A";
+
+standing = "Excellent";
+
+}
+
+else if(cgpa >= 3.0){
+
+grade = "B";
+
+standing = "Very Good";
+
+}
+
+else if(cgpa >= 2.0){
+
+grade = "C";
+
+standing = "Good";
+
+}
+
+else if(cgpa >= 1.0){
+
+grade = "D";
+
+standing = "Average";
+
+}
+
+else{
+
+grade = "F";
+
+standing = "Fail";
+
+}
 }
