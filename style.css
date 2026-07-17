@@ -255,3 +255,30 @@ border-top:2px solid #003366;
 font-size:16px;
 
 }
+.result-heading{
+
+text-align:center;
+
+color:#003366;
+
+border-bottom:2px solid #003366;
+
+padding-bottom:10px;
+
+}
+
+
+.final-result{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+
+.final-result span{
+
+font-weight:bold;
+
+}
