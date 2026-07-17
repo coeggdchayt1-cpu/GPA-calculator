@@ -47,33 +47,42 @@ Version 1.0
 <div class="container">
 <div class="card">
 
+<div class="student-info">
+
 <h2>Student Information</h2>
 
+<div class="info-grid">
 
+<div>
 <label>Student Name</label>
-<br>
-
-<input type="text" placeholder="Enter your name">
-
-
-<br><br>
+<input type="text" id="studentName">
+</div>
 
 
-<label>Roll Number</label>
-<br>
-
-<input type="text" placeholder="Enter your roll number">
-
-
-<br><br>
+<div>
+<label>Roll No.</label>
+<input type="text" id="rollNo">
+</div>
 
 
+<div>
+<label>Father's Name</label>
+<input type="text" id="fatherName">
+</div>
+
+
+<div>
+<label>Registration No.</label>
+<input type="text" id="registrationNo">
+</div>
+
+
+<div>
 <label>Department</label>
-<br>
 
-<select>
+<select id="department">
 
-<option>Select Department</option>
+<option value="">Select Department</option>
 
 <option>BS Chemistry</option>
 
@@ -89,95 +98,73 @@ Version 1.0
 
 </select>
 
+</div>
 
-<br><br>
 
+<div>
+<label>Session</label>
 
-<label>Semester</label>
-<br>
+<select id="session">
 
-<select>
+<option value="">Select Session</option>
 
-<option>Select Semester</option>
+<option>2021–2025</option>
 
-<option>1st Semester</option>
+<option>2022–2026</option>
 
-<option>2nd Semester</option>
+<option>2023–2027</option>
 
-<option>3rd Semester</option>
+<option>2024–2028</option>
 
-<option>4th Semester</option>
+<option>2025–2029</option>
 
-<option>5th Semester</option>
-
-<option>6th Semester</option>
-
-<option>7th Semester</option>
-
-<option>8th Semester</option>
+<option>2026–2030</option>
 
 </select>
 
+</div>
 
-<br><br>
+
+<div>
+<label>Programme</label>
+
+<input type="text" value="BS" readonly>
+
+</div>
 
 
-<button>
+<div>
 
-Continue
-
-</button>
-<br><br>
-
-<h2>Semester Selection</h2>
-
-<label>
-Number of Semesters Completed
-</label>
-
-<br>
+<label>Current Semester</label>
 
 <select id="semesterCount">
 
-<option value="0">
-Select Semester
-</option>
+<option value="1">1st Semester</option>
 
-<option value="1">
-1 Semester
-</option>
+<option value="2">2nd Semester</option>
 
-<option value="2">
-2 Semesters
-</option>
+<option value="3">3rd Semester</option>
 
-<option value="3">
-3 Semesters
-</option>
+<option value="4">4th Semester</option>
 
-<option value="4">
-4 Semesters
-</option>
+<option value="5">5th Semester</option>
 
-<option value="5">
-5 Semesters
-</option>
+<option value="6">6th Semester</option>
 
-<option value="6">
-6 Semesters
-</option>
+<option value="7">7th Semester</option>
 
-<option value="7">
-7 Semesters
-</option>
-
-<option value="8">
-8 Semesters
-</option>
+<option value="8">8th Semester</option>
 
 </select>
 
-<br><br>
+</div>
+
+
+</div>
+
+
+<br>
+
 
 <button onclick="generateSemesters()">
 
@@ -186,13 +173,4 @@ Generate Transcript
 </button>
 
 
-<div id="semesterContainer">
-
 </div>
-
-</div>
-
-<script src="script.js"></script>
-</body>
-
-</html>
