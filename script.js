@@ -451,6 +451,48 @@ semesterBox.querySelector(".totalCH").innerHTML = totalCH;
 semesterBox.querySelector(".totalGP").innerHTML = totalGP.toFixed(2);
 
 semesterBox.querySelector(".sgpa").innerHTML = sgpa.toFixed(2);
+calculateCGPA();
 
+
+}
+function calculateCGPA(){
+
+let semesterCards = document.querySelectorAll(".card");
+
+let totalCH = 0;
+
+let totalGP = 0;
+
+semesterCards.forEach(function(card){
+
+let ch = card.querySelector(".totalCH");
+
+let gp = card.querySelector(".totalGP");
+
+if(ch && gp){
+
+totalCH += Number(ch.innerHTML);
+
+totalGP += Number(gp.innerHTML);
+
+}
+
+});
+
+
+let cgpa = 0;
+
+if(totalCH > 0){
+
+cgpa = totalGP / totalCH;
+
+}
+
+
+document.getElementById("cgpaCH").innerHTML = totalCH;
+
+document.getElementById("cgpaGP").innerHTML = totalGP.toFixed(2);
+
+document.getElementById("cgpa").innerHTML = cgpa.toFixed(2);
 
 }
