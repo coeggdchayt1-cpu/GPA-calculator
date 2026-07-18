@@ -578,3 +578,27 @@ function printTranscript(){
 window.print();
 
 }
+function downloadPDF() {
+
+const { jsPDF } = window.jspdf;
+
+const doc = new jsPDF("p", "mm", "a4");
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(16);
+
+doc.text("Government Girls Degree College No.1 Hayatabad", 105, 15, { align: "center" });
+
+doc.setFontSize(12);
+
+doc.text("Hayatabad, Peshawar", 105, 22, { align: "center" });
+
+doc.text("Affiliated with Shaheed Benazir Bhutto Women University", 105, 29, { align: "center" });
+
+doc.setFontSize(15);
+
+doc.text("STUDENT TRANSCRIPT", 105, 40, { align: "center" });
+
+doc.save("Transcript.pdf");
+
+}
