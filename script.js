@@ -743,6 +743,101 @@ semesters.forEach(function(semesterCard, index){
 
     });
 
+// CGPA Summary
+
+if(yPosition > 240){
+
+    doc.addPage();
+
+    yPosition = 25;
+
+}
+
+
+doc.line(14, yPosition, 196, yPosition);
+
+
+yPosition += 10;
+
+
+doc.setFont("helvetica","bold");
+
+doc.setFontSize(13);
+
+
+doc.text(
+"CUMULATIVE ACADEMIC RECORD",
+14,
+yPosition
+);
+
+
+yPosition += 10;
+
+
+doc.setFont("helvetica","normal");
+
+doc.setFontSize(11);
+
+
+let totalCH = document.getElementById("cgpaCH").innerText;
+
+let totalGP = document.getElementById("cgpaGP").innerText;
+
+let cgpa = document.getElementById("cgpa").innerText;
+
+let overallGrade = document.getElementById("overallGrade").innerText;
+
+let standing = document.getElementById("academicStanding").innerText;
+
+
+
+doc.text(
+`Total Credit Hours: ${totalCH}`,
+14,
+yPosition
+);
+
+
+yPosition += 7;
+
+
+doc.text(
+`Total Grade Points: ${totalGP}`,
+14,
+yPosition
+);
+
+
+yPosition += 7;
+
+
+doc.text(
+`CGPA: ${cgpa}`,
+14,
+yPosition
+);
+
+
+yPosition += 7;
+
+
+doc.text(
+`Overall Grade: ${overallGrade}`,
+14,
+yPosition
+);
+
+
+yPosition += 7;
+
+
+doc.text(
+`Academic Standing: ${standing}`,
+14,
+yPosition
+);
+
 
 
     doc.autoTable({
