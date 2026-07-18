@@ -660,6 +660,167 @@ doc.text(`Current Semester: ${semester}`, 120, 84);
 
 doc.line(14, 90, 196, 90);
 
+// Semester Tables
+
+let yPosition = 100;
+
+let semesters = document.querySelectorAll("#semesterContainer .card");
+
+
+semesters.forEach(function(semesterCard, index){
+
+
+    // Add new page if space is low
+
+    if(yPosition > 250){
+
+        doc.addPage();
+
+        yPosition = 20;
+
+    }
+
+
+    doc.setFont("helvetica","bold");
+
+    doc.setFontSize(12);
+
+
+    doc.text(
+        `${index + 1} Semester`,
+        14,
+        yPosition
+    );
+
+
+    let rows = semesterCard.querySelectorAll("table tr");
+
+    let tableData = [];
+
+
+    rows.forEach(function(row,rowIndex){
+
+
+        // Skip heading row
+
+        if(rowIndex === 0) return;
+
+
+        let cells = row.querySelectorAll("td");
+
+
+        if(cells.length > 0){
+
+
+            tableData.push([
+
+
+                cells[0].querySelector("input").value,
+
+
+                cells[1].querySelector("input").value,
+
+
+                cells[2].querySelector("input").value,
+
+
+                cells[3].innerText,
+
+
+                cells[4].innerText,
+
+
+                cells[5].querySelector("input").value,
+
+
+                cells[6].innerText
+
+
+            ]);
+
+        }
+
+
+    });
+
+
+
+    doc.autoTable({
+
+        startY:yPosition + 5,
+
+
+        head:[
+
+        [
+
+        "Course Code",
+
+        "Course Title",
+
+        "Marks %",
+
+        "Grade",
+
+        "Value",
+
+        "CH",
+
+        "Grade Points"
+
+        ]
+
+        ],
+
+
+        body:tableData,
+
+
+        theme:"grid",
+
+
+        styles:{
+
+            fontSize:8
+
+        }
+
+
+    });
+
+
+
+    yPosition = doc.lastAutoTable.finalY + 8;
+
+
+
+    let sgpa = semesterCard.querySelector(".sgpa");
+
+
+    if(sgpa){
+
+
+        doc.setFontSize(10);
+
+        doc.text(
+
+            `SGPA: ${sgpa.innerText}`,
+
+            14,
+
+            yPosition
+
+        );
+
+
+    }
+
+
+    yPosition += 15;
+
+
+});
+
 
 // Temporary footer
 
