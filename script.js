@@ -584,10 +584,34 @@ const { jsPDF } = window.jspdf;
 
 const doc = new jsPDF("p", "mm", "a4");
 
+
+// Student Information
+
+let name = document.getElementById("studentName").value;
+
+let father = document.getElementById("fatherName").value;
+
+let roll = document.getElementById("rollNo").value;
+
+let reg = document.getElementById("registrationNo").value;
+
+let dept = document.getElementById("department").value;
+
+let session = document.getElementById("session").value;
+
+let semester = document.getElementById("semesterCount").options[
+document.getElementById("semesterCount").selectedIndex
+].text;
+
+
+// Header
+
 doc.setFont("helvetica", "bold");
+
 doc.setFontSize(16);
 
 doc.text("Government Girls Degree College No.1 Hayatabad", 105, 15, { align: "center" });
+
 
 doc.setFontSize(12);
 
@@ -595,10 +619,59 @@ doc.text("Hayatabad, Peshawar", 105, 22, { align: "center" });
 
 doc.text("Affiliated with Shaheed Benazir Bhutto Women University", 105, 29, { align: "center" });
 
+
 doc.setFontSize(15);
 
 doc.text("STUDENT TRANSCRIPT", 105, 40, { align: "center" });
 
-doc.save("Transcript.pdf");
+
+// Student Information Section
+
+doc.setFontSize(11);
+
+doc.setFont("helvetica", "bold");
+
+doc.text("Student Information", 14, 52);
+
+
+doc.setFont("helvetica", "normal");
+
+doc.text(`Student Name: ${name}`, 14, 60);
+
+doc.text(`Roll No: ${roll}`, 120, 60);
+
+
+doc.text(`Father Name: ${father}`, 14, 68);
+
+doc.text(`Registration No: ${reg}`, 120, 68);
+
+
+doc.text(`Department: ${dept}`, 14, 76);
+
+doc.text(`Session: ${session}`, 120, 76);
+
+
+doc.text(`Programme: BS`, 14, 84);
+
+doc.text(`Current Semester: ${semester}`, 120, 84);
+
+
+// Line separator
+
+doc.line(14, 90, 196, 90);
+
+
+// Temporary footer
+
+doc.setFont("helvetica", "italic");
+
+doc.setFontSize(9);
+
+doc.text("This is a student-generated transcript.", 14, 285);
+
+
+// Download
+
+doc.save(`${name || "Student"}_Transcript.pdf`);
 
 }
