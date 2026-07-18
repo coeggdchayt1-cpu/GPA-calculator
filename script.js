@@ -616,23 +616,3 @@ yPosition
 // Footer
 
 
-doc.setFont("helvetica","italic");
-
-doc.setFontSize(9);
-
-
-doc.text(
-"This is a student-generated transcript.",
-14,
-285
-);
-
-
-
-// Save PDF
-
-
-doc.save(`${name || "Student"}_Transcript.pdf`);
-
-
-}
