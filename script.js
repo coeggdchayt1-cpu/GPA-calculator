@@ -1,388 +1,162 @@
-function downloadPDF() {
+function generateSemesters(){
 
-const { jsPDF } = window.jspdf;
+let count = document.getElementById("semesterCount").value;
 
-const doc = new jsPDF("p", "mm", "a4");
+let container = document.getElementById("semesterContainer");
 
-
-// Student Information
-
-let name = document.getElementById("studentName").value;
-let father = document.getElementById("fatherName").value;
-let roll = document.getElementById("rollNo").value;
-let reg = document.getElementById("registrationNo").value;
-let dept = document.getElementById("department").value;
-let session = document.getElementById("session").value;
-
-let semester = document.getElementById("semesterCount").options[
-document.getElementById("semesterCount").selectedIndex
-].text;
+container.innerHTML = "";
 
 
-// Header
+for(let i=1; i<=count; i++){
 
-doc.setFont("helvetica","bold");
+let semester = document.createElement("div");
 
-doc.setFontSize(16);
-
-doc.text(
-"Government Girls Degree College No.1 Hayatabad",
-105,
-15,
-{align:"center"}
-);
+semester.className="card";
 
 
-doc.setFontSize(12);
+semester.innerHTML = `
 
-doc.text(
-"Hayatabad, Peshawar",
-105,
-22,
-{align:"center"}
-);
+<h2>Semester ${i}</h2>
 
+<table border="1" width="100%">
 
-doc.text(
-"Affiliated with Shaheed Benazir Bhutto Women University",
-105,
-29,
-{align:"center"}
-);
-
-
-doc.setFontSize(15);
-
-doc.text(
-"STUDENT TRANSCRIPT",
-105,
-40,
-{align:"center"}
-);
+<tr>
+<th>Course Code</th>
+<th>Course Title</th>
+<th>% Marks</th>
+<th>Grade</th>
+<th>Value</th>
+<th>Credit Hours</th>
+<th>Grade Points</th>
+</tr>
 
 
-// Student Information
+<tr>
 
-doc.setFontSize(11);
+<td><input type="text" class="courseCode"></td>
 
-doc.text(
-"Student Information",
-14,
-52
-);
+<td><input type="text" class="courseTitle"></td>
 
+<td><input type="number" class="marks" oninput="calculateRow(this)"></td>
 
-doc.setFont("helvetica","normal");
+<td class="grade">-</td>
 
+<td class="value">-</td>
 
-doc.text(`Student Name: ${name}`,14,60);
+<td><input type="number" class="creditHours" oninput="calculateRow(this); calculateSGPA(this)"></td>
 
-doc.text(`Roll No: ${roll}`,120,60);
+<td class="points">-</td>
 
+</tr>
 
-doc.text(`Father Name: ${father}`,14,68);
-
-doc.text(`Registration No: ${reg}`,120,68);
+</table>
 
 
-doc.text(`Department: ${dept}`,14,76);
+<br>
 
-doc.text(`Session: ${session}`,120,76);
-
-
-doc.text(`Programme: BS`,14,84);
-
-doc.text(`Current Semester: ${semester}`,120,84);
+<button onclick="addCourse(this)">
++ Add Course
+</button>
 
 
+<div class="semesterResult">
 
-doc.line(14,90,196,90);
-
-
-
-// ===============================
-// SEMESTER TABLES
-// ===============================
+<p>Total Credit Hours:
+<span class="totalCH">0</span>
+</p>
 
 
-let yPosition = 100;
+<p>Total Grade Points:
+<span class="totalGP">0</span>
+</p>
 
 
-let semesters = document.querySelectorAll("#semesterContainer .card");
+<p>SGPA:
+<span class="sgpa">0.00</span>
+</p>
 
 
-semesters.forEach(function(semesterCard,index){
+<p>Grade:
+<span class="semesterGrade">-</span>
+</p>
 
 
+</div>
 
-if(yPosition > 250){
+`;
 
-doc.addPage();
-
-yPosition = 20;
+container.appendChild(semester);
 
 }
 
 
 
-doc.setFont("helvetica","bold");
+let cgpaCard=document.createElement("div");
 
-doc.setFontSize(12);
-
-
-doc.text(
-`${index+1} Semester`,
-14,
-yPosition
-);
+cgpaCard.className="card";
 
 
+cgpaCard.innerHTML=`
 
-let rows = semesterCard.querySelectorAll("table tr");
+<h2>Cumulative Academic Record</h2>
 
-
-let tableData = [];
-
-
-
-rows.forEach(function(row,rowIndex){
+<p>Total Credit Hours:
+<span id="cgpaCH">0</span>
+</p>
 
 
-if(rowIndex === 0) return;
+<p>Total Grade Points:
+<span id="cgpaGP">0.00</span>
+</p>
 
 
-let cells = row.querySelectorAll("td");
+<p>CGPA:
+<span id="cgpa">0.00</span>
+</p>
 
 
-if(cells.length > 0){
+<p>Overall Grade:
+<span id="overallGrade">-</span>
+</p>
 
 
-tableData.push([
+<p>Academic Standing:
+<span id="academicStanding">-</span>
+</p>
 
+`;
 
-cells[0].querySelector("input").value,
-
-cells[1].querySelector("input").value,
-
-cells[2].querySelector("input").value,
-
-cells[3].innerText,
-
-cells[4].innerText,
-
-cells[5].querySelector("input").value,
-
-cells[6].innerText
-
-
-]);
-
+container.appendChild(cgpaCard);
 
 }
 
 
-});
 
+function addCourse(button){
 
+let semesterBox=button.parentElement;
 
-doc.autoTable({
+let table=semesterBox.querySelector("table");
 
+let row=table.insertRow(-1);
 
-startY:yPosition+5,
 
+row.innerHTML=`
 
-head:[
+<td><input type="text" class="courseCode"></td>
 
-[
-"Course Code",
-"Course Title",
-"Marks %",
-"Grade",
-"Value",
-"CH",
-"Grade Points"
-]
+<td><input type="text" class="courseTitle"></td>
 
-],
+<td><input type="number" class="marks" oninput="calculateRow(this)"></td>
 
+<td class="grade">-</td>
 
-body:tableData,
+<td class="value">-</td>
 
+<td><input type="number" class="creditHours" oninput="calculateRow(this); calculateSGPA(this)"></td>
 
-theme:"grid",
+<td class="points">-</td>
 
-
-styles:{
-
-fontSize:8
-
-}
-
-
-});
-
-
-
-yPosition = doc.lastAutoTable.finalY + 8;
-
-
-
-let sgpa = semesterCard.querySelector(".sgpa");
-
-
-if(sgpa){
-
-
-doc.setFontSize(10);
-
-
-doc.text(
-
-`SGPA: ${sgpa.innerText}`,
-
-14,
-
-yPosition
-
-);
-
-
-}
-
-
-yPosition += 15;
-
-
-});
-
-
-
-
-
-// ===============================
-// CGPA SUMMARY (ONLY ONCE)
-// ===============================
-
-
-if(yPosition > 240){
-
-doc.addPage();
-
-yPosition = 25;
-
-}
-
-
-
-doc.line(14,yPosition,196,yPosition);
-
-
-yPosition += 10;
-
-
-doc.setFont("helvetica","bold");
-
-doc.setFontSize(13);
-
-
-doc.text(
-"CUMULATIVE ACADEMIC RECORD",
-14,
-yPosition
-);
-
-
-
-yPosition += 10;
-
-
-doc.setFont("helvetica","normal");
-
-doc.setFontSize(11);
-
-
-
-let totalCH = document.getElementById("cgpaCH").innerText;
-
-let totalGP = document.getElementById("cgpaGP").innerText;
-
-let cgpa = document.getElementById("cgpa").innerText;
-
-let overallGrade = document.getElementById("overallGrade").innerText;
-
-let standing = document.getElementById("academicStanding").innerText;
-
-
-
-doc.text(
-`Total Credit Hours: ${totalCH}`,
-14,
-yPosition
-);
-
-
-yPosition += 7;
-
-
-doc.text(
-`Total Grade Points: ${totalGP}`,
-14,
-yPosition
-);
-
-
-yPosition += 7;
-
-
-doc.text(
-`CGPA: ${cgpa}`,
-14,
-yPosition
-);
-
-
-yPosition += 7;
-
-
-doc.text(
-`Overall Grade: ${overallGrade}`,
-14,
-yPosition
-);
-
-
-yPosition += 7;
-
-
-doc.text(
-`Academic Standing: ${standing}`,
-14,
-yPosition
-);
-
-
-
-
-// Footer
-
-
-doc.setFont("helvetica","italic");
-
-doc.setFontSize(9);
-
-
-doc.text(
-"This is a student-generated transcript.",
-14,
-285
-);
-
-
-
-// Save PDF
-
-
-doc.save(`${name || "Student"}_Transcript.pdf`);
-
+`;
 
 }
